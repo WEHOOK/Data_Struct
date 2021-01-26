@@ -82,21 +82,34 @@ public class LinkedList<E> {
             for (int i = 0; i < index - 1; i++) {
                 prev = prev.next;
             }
+
             node.next = prev.next;
             prev.next = node;
             size++;
         }
     }
 
+    /**
+     * 在链表尾部增加元素
+     * @param e
+     */
     public void addLast(E e){
         add(e,size - 1);
+    }
+
+    public E get(int index){
+        Node cur = head;
+        for (int i = 0; i < index ; i++) {
+            cur = cur.next;
+        }
+        return cur.e;
     }
 
     @Override
     public String toString(){
         Node cur = head;
         StringBuilder sb = new StringBuilder();
-        while (cur.next != null){
+        while (cur != null){
             sb.append(cur.e + " -> ");
             cur = cur.next;
         }
